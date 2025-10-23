@@ -1,0 +1,233 @@
+*{
+  margin: 0%;
+  padding: 0%;
+}
+
+body,
+#root,
+header,
+.languagesContainer,
+.wordContainer,
+.wordContainer>span,
+.keyboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button{
+  font-family: "Hanken Grotesk";
+  cursor: pointer;
+}
+
+body{
+  height: 100vh;
+  width: 100%;
+  font-family: "Hanken Grotesk";
+  background-color: #1E1E1E;
+}
+
+#root{
+  width: 700px;
+  /* border: 1px solid red; */
+  /* padding: 50px; */
+  background-color: rgba(40, 39, 38, 1);
+  flex-direction: column;
+}
+
+header{
+  max-width: 350px;
+  text-align: center;
+  flex-direction: column;
+  gap: 4px;
+  margin: 70px 0px 25px;
+}
+
+header > h1{
+  color: rgba(249, 244, 218, 1);
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+header > p {
+  color: rgba(142, 142, 142, 1);
+  font-size: 16px;
+}
+
+section.gameStatus{
+  height: 83px;
+  background-color: #10a95b;
+  width: 350px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: rgba(249, 244, 218, 1);
+  padding: 0px 50px;
+  border-radius: 6px;
+}
+
+section.gameLost{
+  background-color: #ba2a2a;
+}
+
+section.gameWon {
+  background-color: #10a95b;
+}
+
+section.gamePending{
+  background-color: #7a5ea7;
+}
+
+section.gamePending > h2{
+  font-weight: 400;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+section > h2{
+  font-weight: 500;
+  font-size: 1.75rem;
+}
+
+section > p {
+  font-size: 1.22rem;
+}
+
+.languagesContainer{
+  /* border: 1px solid red; */
+  max-width: 350px;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-block: 35px;
+}
+
+.languageElements{
+  border-radius: 3px;
+  padding: 4px;
+  font-weight: 700;
+  display: grid;
+  text-align: center;
+  position: relative;
+}
+
+.languageElements > span, .languageElements > section{
+  grid-area: 1 / 1;
+}
+
+.languageElements>section{
+  opacity: 0;
+}
+
+.wordContainer{
+  /* border: 1px solid red; */
+  width: 350px;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 50px;
+}
+
+.wordContainer > span{
+  height: 50px;
+  width: 50px;
+  background-color: rgba(50, 50, 50, 1);
+  color: rgba(249, 244, 218, 1);
+  border-bottom: 1px solid rgba(249, 244, 218, 1);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.keyboard{
+  width: 550px;
+  /* border: 1px solid red; */
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyboard > button{
+  width: 45px;
+  height: 45px;
+  background-color: rgba(252, 186, 41, 1);
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  outline: 0px solid transparent;
+  transition: all .2s ease;
+}
+
+.keyboard>button:hover{
+  outline: 3px solid #d7d7d7;
+}
+
+.newGameBtn{
+  background-color: rgba(17, 181, 229, 1);
+  border: 1px solid #d7d7d7;
+  margin: 35px 0px 70px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 15px 100px;
+}
+
+.keyboard > button.correctLetter{
+  background-color: #10a95b;
+}
+
+.keyboard>button.wrongLetter {
+  background-color: #ec5d49;
+}
+
+.wordToFind{
+  transition: all 1s ease;
+}
+
+.languageElements.dimmed::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  /* Μαύρο overlay */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.languageElements section {
+  position: relative;
+  z-index: 2;
+  /* Πάνω από το overlay */
+}
+
+/* Στο CSS αρχείο σου */
+.languageElements section {
+  transition: all 0.5s ease;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.languageElements.dimmed section {
+  transform: scale(1);
+  opacity: 1;
+  animation: skull-appear 0.8s ease;
+}
+
+@keyframes skull-appear {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
